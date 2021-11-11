@@ -1,5 +1,5 @@
 <template>
-  <div class="board" tabIndex="1">
+  <div class="board" :class=[rotation] tabIndex="1">
     <div v-for="(r_item, r_i) in board.cells" :key="r_i">
       <cell v-for="(c_item, c_i) in r_item" :key="c_i"></cell>
     </div>
@@ -17,14 +17,31 @@ import { onMounted, onBeforeUnmount, ref, computed } from "vue";
 export default {
   setup() {
     const board = ref(new Board());
+    const rotation = ref('none');
+    let timeOut
+    const moveToCenter = () => {
+      clearTimeout(timeOut)
+      timeOut = setTimeout(() => {
+        rotation.value = 'none';
+      }, 600);
+    }
+
     const handleKeyDown = (event) => {
-      if (board.value.hasWon()) {
-        return;
+      const keys = {
+        37: 'left',
+        38 : 'up',
+        39: 'right',
+        40 : 'down' 
       }
-      if (event.keyCode >= 37 && event.keyCode <= 40) {
+      
+      if (board.value.hasWon()) return;
+
+      if (keys[event.keyCode]) {
         event.preventDefault();
         var direction = event.keyCode - 37;
         board.value.move(direction);
+        rotation.value = keys[event.keyCode];
+        moveToCenter()
       }
     };
     const onRestart = () => {
@@ -43,6 +60,7 @@ export default {
       board,
       onRestart,
       tiles,
+      rotation
     };
   },
   components: {
@@ -52,3 +70,21 @@ export default {
   },
 };
 </script>
+
+<style>
+  .none {
+    transform: perspective(50m);
+  }
+  .up {
+    transform: perspective(50em) rotateX(18deg);
+  }
+  .down {
+    transform: perspective(50em) rotateX(-18deg);
+  }
+  .left {
+    transform: perspective(50em) rotateY(-18deg);
+  }
+  .right {
+    transform: perspective(50em) rotateY(18deg);
+  }
+</style>

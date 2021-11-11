@@ -32,6 +32,7 @@ body {
   border-radius: 7px;
   outline: none;
   position: relative;
+  transition: transform .5s;
   -webkit-transform: scale(calc(90vmin / 440));
   -moz-transform: scale(calc(90vmin / 440));
   -ms-transform: scale(calc(90vmin / 440));
@@ -40,6 +41,10 @@ body {
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
+  -webkit-transition: transform .5s;
+  -moz-transition: transform .5s;
+  -ms-transition: transform .5s;
+  -o-transition: transform .5s;
 }
 
 .board .cell, .tile {
