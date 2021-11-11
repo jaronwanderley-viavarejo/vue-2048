@@ -1,7 +1,7 @@
 <template>
   <div class="overlay" v-show="show">
     <p class="message">{{ contents }}</p>
-    <button class="tryAgain" @click="restart">Try again</button>
+    <button class="tryAgain" @click="restart">Tentar de novo!</button>
   </div>
 </template>
 
@@ -24,13 +24,9 @@ export default {
       return board.value.hasWon() || board.value.hasLost();
     });
     const contents = computed(() => {
-      if (board.value.hasWon()) {
-        return "Good Job!";
-      } else if (board.value.hasLost()) {
-        return "Game Over";
-      } else {
-        return "";
-      }
+      if (board.value.hasWon()) return "Parabéns você arrasa!";
+      if (board.value.hasLost()) return "Vixe... fim do jogo...";
+      return "";
     });
     const restart = () => {
       props.onrestart && props.onrestart();

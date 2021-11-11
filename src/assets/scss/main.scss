@@ -11,6 +11,8 @@ body {
   align-items: center;
   font-family: "Clear Sans", sans-serif;
   font-size: 21px;
+  margin: 0;
+  height: 100vh;
 }
 
 .text {
@@ -24,11 +26,20 @@ body {
   order: 1;
   width: 440px;
   height: 440px;
+  transform: scale(calc(90vmin / 440));
   padding: 5px;
   background-color: #baa;
   border-radius: 7px;
   outline: none;
   position: relative;
+  -webkit-transform: scale(calc(90vmin / 440));
+  -moz-transform: scale(calc(90vmin / 440));
+  -ms-transform: scale(calc(90vmin / 440));
+  -o-transform: scale(calc(90vmin / 440));
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
 }
 
 .board .cell, .tile {

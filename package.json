@@ -1,8 +1,8 @@
 {
   "name": "vue-2048",
   "version": "3.0.0",
-  "description": "A Vue.js project",
-  "author": "chang_su <pengfoo@126.com>",
+  "description": "2048 feito em Vue.js e Neutralino.js",
+  "author": "Jaron de Barros Wanderley",
   "private": true,
   "scripts": {
     "clean": "rimraf dist",
